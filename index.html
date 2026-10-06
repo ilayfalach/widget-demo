@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>עיריית גבעת הדקל · אתר הדגמה</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;600;700&family=Assistant:wght@400;600&display=swap">
+<style>
+  :root {
+    --navy: #12324f; --teal: #1f8a8a; --sand: #f6f3ee; --ink: #1d2733; --muted: #5d6875; --line: #e3e0da; --white: #fff;
+    --display: "Rubik", "Assistant", Arial, sans-serif; --body: "Assistant", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: var(--body); color: var(--ink); background: var(--white); font-size: 17px; line-height: 1.6; }
+  a { color: inherit; }
+  .demo-ribbon { background: #fff4d6; color: #6b4e00; font-size: 0.85rem; text-align: center; padding: 6px 16px; border-bottom: 1px solid #f0dfaa; }
+  header { background: var(--navy); color: var(--white); }
+  .wrap { max-width: 1120px; margin: 0 auto; padding-inline: 20px; }
+  .top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 16px; flex-wrap: wrap; }
+  .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .brand b { font-family: var(--display); font-size: 1.35rem; font-weight: 700; }
+  .brand small { display: block; font-size: 0.8rem; opacity: 0.75; }
+  nav { display: flex; gap: 22px; flex-wrap: wrap; font-size: 0.97rem; }
+  nav a { text-decoration: none; opacity: 0.9; }
+  nav a:hover { opacity: 1; text-decoration: underline; text-underline-offset: 4px; }
+  .hero { background: linear-gradient(180deg, var(--navy) 0%, #1a4468 100%); color: var(--white); padding-block: 56px 72px; }
+  .hero h1 { font-family: var(--display); font-size: clamp(1.8rem, 4vw, 2.7rem); margin: 0 0 12px; line-height: 1.2; }
+  .hero p { max-width: 56ch; margin: 0 0 24px; opacity: 0.9; }
+  .search { display: flex; max-width: 560px; background: var(--white); border-radius: 10px; overflow: hidden; }
+  .search input { flex: 1; border: 0; padding: 14px 16px; font: inherit; color: var(--ink); min-width: 0; }
+  .search button { border: 0; background: var(--teal); color: var(--white); font: 600 1rem var(--body); padding: 0 22px; cursor: pointer; }
+  main { padding-block: 0 64px; }
+  .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: -36px; }
+  .service { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 20px; box-shadow: 0 6px 18px rgba(18, 50, 79, 0.08); display: grid; gap: 6px; text-decoration: none; }
+  .service .ic { width: 40px; height: 40px; border-radius: 10px; background: #e3f2f2; color: var(--teal); display: grid; place-items: center; font-size: 1.3rem; }
+  .service h3 { font-family: var(--display); font-size: 1.08rem; margin: 6px 0 0; }
+  .service p { margin: 0; color: var(--muted); font-size: 0.93rem; }
+  h2 { font-family: var(--display); font-size: 1.5rem; margin: 48px 0 16px; }
+  .two { display: grid; grid-template-columns: 1.3fr 1fr; gap: 28px; align-items: start; }
+  @media (max-width: 760px) { .two { grid-template-columns: 1fr; } }
+  .news { display: grid; gap: 14px; }
+  .news article { border-bottom: 1px solid var(--line); padding-bottom: 14px; }
+  .news time { color: var(--muted); font-size: 0.85rem; }
+  .news h3 { margin: 2px 0 4px; font-size: 1.05rem; font-family: var(--display); }
+  .news p { margin: 0; color: var(--muted); }
+  .box { background: var(--sand); border-radius: 12px; padding: 20px; display: grid; gap: 8px; }
+  .box h3 { margin: 0; font-family: var(--display); }
+  .box ul { margin: 0; padding-inline-start: 1.2em; color: var(--muted); }
+  footer { background: #0e2740; color: #c9d3de; font-size: 0.9rem; padding-block: 28px; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+  .qa-toggle { position: fixed; top: 12px; left: 12px; z-index: 2147483600; background: #fff; color: var(--navy); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font: 600 0.85rem var(--body); cursor: pointer; box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12); }
+  .qa-panel { position: fixed; top: 52px; left: 12px; z-index: 2147483600; width: min(440px, calc(100vw - 24px)); background: #fff; border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18); padding: 16px; display: grid; gap: 10px; font-size: 0.92rem; }
+  .qa-panel[hidden] { display: none; }
+  .qa-panel h4 { margin: 0; font-family: var(--display); font-size: 1rem; }
+  .qa-row { display: grid; grid-template-columns: 6.5em 1fr; gap: 8px; }
+  .qa-row span:first-child { color: var(--muted); }
+  .qa-row code, .qa-panel textarea { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 0.78rem; direction: ltr; text-align: left; overflow-wrap: anywhere; }
+  .qa-panel textarea { width: 100%; min-height: 84px; border: 1px solid var(--line); border-radius: 8px; padding: 8px; resize: vertical; }
+  .qa-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+  .qa-actions button { font: 600 0.88rem var(--body); border-radius: 8px; padding: 7px 14px; cursor: pointer; border: 1px solid var(--line); background: #fff; color: var(--ink); }
+  .qa-actions .primary { background: var(--teal); border-color: var(--teal); color: #fff; }
+  .qa-status { font-weight: 600; }
+  .qa-status.ok { color: #1d7a52; }
+  .qa-status.bad { color: #b4381c; }
+  .qa-note { color: var(--muted); font-size: 0.82rem; margin: 0; }
+</style>
+</head>
+<body>
+<div class="demo-ribbon">אתר הדגמה לבדיקת ווידג'ט הצ'אט של LinnoChat. העירייה והתוכן בדויים.</div>
+<header>
+  <div class="wrap top">
+    <a class="brand" href="#">
+      <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#1f8a8a"/><path d="M20 8c-5 6-8 10-8 15a8 8 0 0 0 16 0c0-5-3-9-8-15z" fill="#fff"/><path d="M20 31v-9" stroke="#1f8a8a" stroke-width="2.4" stroke-linecap="round"/></svg>
+      <span><b>עיריית גבעת הדקל</b><small>עיר ירוקה, שירות קרוב</small></span>
+    </a>
+    <nav aria-label="ראשי">
+      <a href="#services">שירותים</a><a href="#news">חדשות</a><a href="#">תשלומים</a><a href="#">חניה</a><a href="#">צור קשר</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <h1>כל השירותים העירוניים, במקום אחד</h1>
+    <p>תו חניה, תשלומי ארנונה, רישום לגנים ודיווח על מפגעים. אפשר גם לשאול את הנציגה הדיגיטלית שלנו, בכפתור הצ'אט בפינת המסך.</p>
+    <form class="search" role="search" onsubmit="return false">
+      <input type="search" placeholder="מה תרצו לעשות היום?" aria-label="חיפוש שירות">
+      <button type="submit">חיפוש</button>
+    </form>
+  </div>
+</section>
+
+<main class="wrap">
+  <div class="services" id="services">
+    <a class="service" href="#"><span class="ic">🅿️</span><h3>תו חניה לתושב</h3><p>בקשה חדשה, חידוש והוספת רכב.</p></a>
+    <a class="service" href="#"><span class="ic">🏠</span><h3>ארנונה</h3><p>תשלום, הסדר והנחות לפי זכאות.</p></a>
+    <a class="service" href="#"><span class="ic">🧸</span><h3>רישום לגני ילדים</h3><p>שנת הלימודים תשפ"ז, עד 30.1.</p></a>
+    <a class="service" href="#"><span class="ic">🛠️</span><h3>דיווח על מפגע</h3><p>פנס שבור, בור בכביש, גזם.</p></a>
+  </div>
+
+  <div class="two">
+    <section id="news">
+      <h2>חדשות העירייה</h2>
+      <div class="news">
+        <article><time>5 באוקטובר 2026</time><h3>הרחבת אזורי החניה הכחולים במרכז העיר</h3><p>מנובמבר יתווספו שלושה רחובות לאזור החניה לתושבים בלבד.</p></article>
+        <article><time>28 בספטמבר 2026</time><h3>פארק העמקים נפתח מחדש</h3><p>אחרי שיפוץ של חצי שנה: מתקני משחק חדשים ושביל אופניים.</p></article>
+        <article><time>21 בספטמבר 2026</time><h3>שעות פעילות מוקד 106 בחגים</h3><p>המוקד פעיל 24 שעות, גם בצ'אט באתר.</p></article>
+      </div>
+    </section>
+    <aside>
+      <h2>צריכים עזרה?</h2>
+      <div class="box">
+        <h3>הנציגה הדיגיטלית</h3>
+        <p>זמינה מסביב לשעון בכפתור הצ'אט. היא עוזרת למלא בקשות, בלי טפסים.</p>
+        <ul><li>מוקד 106: ‎08-0000000</li><li>קבלת קהל: א'-ה' 8:00-13:00</li></ul>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap"><span>© עיריית גבעת הדקל (בדויה) · אתר הדגמה</span><span>נגישות · פרטיות · מפת האתר</span></div>
+</footer>
+
+<button class="qa-toggle" type="button" id="qa-toggle" aria-expanded="false" aria-controls="qa-panel">כלי בדיקה</button>
+<div class="qa-panel" id="qa-panel" hidden>
+  <h4>הווידג'ט שמוצג באתר</h4>
+  <div class="qa-row"><span>סביבה</span><code id="qa-env">-</code></div>
+  <div class="qa-row"><span>חשבון</span><code id="qa-account">-</code></div>
+  <div class="qa-row"><span>פרויקט</span><code id="qa-survey">-</code></div>
+  <div class="qa-row"><span>מצב</span><span class="qa-status" id="qa-status">בודק…</span></div>
+  <label for="qa-snippet"><b>להצגת ווידג'ט אחר:</b> מדביקים את קוד ההטמעה מ-LinnoChat (Configuration ← WebChat ← Widget)</label>
+  <textarea id="qa-snippet" spellcheck="false" placeholder='<script src="https://webchat.lcb-stage.linnovate.net/a/embed/loader.js" data-account="..." data-survey="..."></script>'></textarea>
+  <div class="qa-actions">
+    <button type="button" class="primary" id="qa-apply">הצגה באתר</button>
+    <button type="button" id="qa-reset">חזרה לברירת המחדל</button>
+  </div>
+  <p class="qa-note">שינוי בהגדרות ב-LinnoChat מופיע כאן אחרי שמירה ורענון של העמוד, בלי להדביק שוב. שיחות מהאתר הזה נשמרות כ-Live.</p>
+</div>
+
+<script>
+  var QA_KEY = 'linnochat-widget-demo-snippet';
+  var LOADERS = { stage: 'https://webchat.lcb-stage.linnovate.net', dev: 'https://webchat.lcb-dev.linnovate.net' };
+  var DEFAULT_SNIPPET = '<script src="https://webchat.lcb-stage.linnovate.net/a/embed/loader.js" data-account="convercx" data-survey="b93e874f86b144aba598bd80e31410e1"><\/script>';
+  var idOnly = function (value) { return (value || '').replace(/[^\w-]/g, ''); };
+
+  function snippetFromLink() {
+    var params = new URLSearchParams(location.search);
+    if (!params.get('survey')) return '';
+    var base = LOADERS[params.get('env')] || LOADERS.stage;
+    return '<script src="' + base + '/a/embed/loader.js" data-account="' + idOnly(params.get('account') || 'convercx') +
+      '" data-survey="' + idOnly(params.get('survey')) + '"><\/script>';
+  }
+  function storedSnippet() { try { return localStorage.getItem(QA_KEY) || ''; } catch (e) { return ''; } }
+  function store(value) { try { value ? localStorage.setItem(QA_KEY, value) : localStorage.removeItem(QA_KEY); } catch (e) {} }
+
+  var fromLink = snippetFromLink();
+  if (fromLink) store(fromLink);
+  window.QA_SNIPPET = fromLink || storedSnippet() || DEFAULT_SNIPPET;
+</script>
+
+<script>
+  (function () {
+    var toggle = document.getElementById('qa-toggle');
+    var panel = document.getElementById('qa-panel');
+    var snippet = window.QA_SNIPPET;
+    var pick = function (re) { var m = snippet.match(re); return m ? m[1] : '-'; };
+    var host = pick(/src="https?:\/\/([^/"]+)/);
+    document.getElementById('qa-env').textContent = /lcb-stage/.test(host) ? 'Staging' : /lcb-dev/.test(host) ? 'DEV' : host;
+    document.getElementById('qa-account').textContent = pick(/data-account="([^"]+)"/);
+    document.getElementById('qa-survey').textContent = pick(/data-survey="([^"]+)"/);
+    document.getElementById('qa-snippet').value = snippet === DEFAULT_SNIPPET ? '' : snippet;
+
+    toggle.addEventListener('click', function () {
+      panel.hidden = !panel.hidden;
+      toggle.setAttribute('aria-expanded', String(!panel.hidden));
+    });
+    document.getElementById('qa-apply').addEventListener('click', function () {
+      var value = document.getElementById('qa-snippet').value.trim();
+      if (!/data-survey=/.test(value)) { document.getElementById('qa-status').textContent = 'זה לא נראה כמו קוד הטמעה: חסר data-survey.'; return; }
+      store(value);
+      location.href = location.pathname;
+    });
+    document.getElementById('qa-reset').addEventListener('click', function () { store(''); location.href = location.pathname; });
+
+    var status = document.getElementById('qa-status');
+    var tries = 0;
+    var timer = setInterval(function () {
+      tries++;
+      if (document.getElementById('topicx-webchat-embed-root')) {
+        clearInterval(timer); status.textContent = 'הווידג\'ט נטען'; status.className = 'qa-status ok';
+      } else if (tries > 24) {
+        clearInterval(timer); status.textContent = 'הווידג\'ט לא נטען: לפרויקט אין ווידג\'ט פעיל, או שהקוד שגוי.'; status.className = 'qa-status bad';
+      }
+    }, 500);
+  })();
+</script>
+
+<script>
+  document.write(window.QA_SNIPPET);
+</script>
+</body>
+</html>
