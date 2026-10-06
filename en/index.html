@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Greenfield City Council · Demo site</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;600;700&family=Source+Sans+3:wght@400;600&display=swap">
+<style>
+  :root {
+    --forest: #1f4d3a; --leaf: #2f8f5b; --mint: #e6f3ec; --sand: #f6f4ef; --ink: #1d2733; --muted: #5d6875; --line: #e2e2dc; --white: #fff;
+    --display: "Rubik", Arial, sans-serif; --body: "Source Sans 3", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: var(--body); color: var(--ink); background: var(--white); font-size: 17px; line-height: 1.6; }
+  a { color: inherit; }
+  .demo-ribbon { background: #fff4d6; color: #6b4e00; font-size: 0.85rem; text-align: center; padding: 6px 16px; border-bottom: 1px solid #f0dfaa; }
+  header { background: var(--forest); color: var(--white); }
+  .wrap { max-width: 1120px; margin: 0 auto; padding-inline: 20px; }
+  .top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 16px; flex-wrap: wrap; }
+  .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .brand b { font-family: var(--display); font-size: 1.35rem; font-weight: 700; }
+  .brand small { display: block; font-size: 0.8rem; opacity: 0.75; }
+  nav { display: flex; gap: 22px; flex-wrap: wrap; font-size: 0.97rem; }
+  nav a { text-decoration: none; opacity: 0.9; }
+  nav a:hover { opacity: 1; text-decoration: underline; text-underline-offset: 4px; }
+  .hero { background: linear-gradient(180deg, var(--forest) 0%, #2a6249 100%); color: var(--white); padding-block: 56px 72px; }
+  .hero h1 { font-family: var(--display); font-size: clamp(1.8rem, 4vw, 2.7rem); margin: 0 0 12px; line-height: 1.2; }
+  .hero p { max-width: 58ch; margin: 0 0 24px; opacity: 0.9; }
+  .search { display: flex; max-width: 560px; background: var(--white); border-radius: 10px; overflow: hidden; }
+  .search input { flex: 1; border: 0; padding: 14px 16px; font: inherit; color: var(--ink); min-width: 0; }
+  .search button { border: 0; background: var(--leaf); color: var(--white); font: 600 1rem var(--body); padding: 0 22px; cursor: pointer; }
+  main { padding-block: 0 64px; }
+  .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: -36px; }
+  .service { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 20px; box-shadow: 0 6px 18px rgba(31, 77, 58, 0.08); display: grid; gap: 6px; text-decoration: none; }
+  .service .ic { width: 40px; height: 40px; border-radius: 10px; background: var(--mint); display: grid; place-items: center; font-size: 1.3rem; }
+  .service h3 { font-family: var(--display); font-size: 1.08rem; margin: 6px 0 0; }
+  .service p { margin: 0; color: var(--muted); font-size: 0.93rem; }
+  h2 { font-family: var(--display); font-size: 1.5rem; margin: 48px 0 16px; }
+  .two { display: grid; grid-template-columns: 1.3fr 1fr; gap: 28px; align-items: start; }
+  @media (max-width: 760px) { .two { grid-template-columns: 1fr; } }
+  .news { display: grid; gap: 14px; }
+  .news article { border-bottom: 1px solid var(--line); padding-bottom: 14px; }
+  .news time { color: var(--muted); font-size: 0.85rem; }
+  .news h3 { margin: 2px 0 4px; font-size: 1.05rem; font-family: var(--display); }
+  .news p { margin: 0; color: var(--muted); }
+  .box { background: var(--sand); border-radius: 12px; padding: 20px; display: grid; gap: 8px; }
+  .box h3 { margin: 0; font-family: var(--display); }
+  .box p { margin: 0; }
+  .box ul { margin: 0; padding-inline-start: 1.2em; color: var(--muted); }
+  footer { background: #173a2c; color: #c8d6ce; font-size: 0.9rem; padding-block: 28px; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+  .qa-toggle { position: fixed; top: 12px; left: 12px; z-index: 2147483600; background: #fff; color: var(--forest); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font: 600 0.85rem var(--body); cursor: pointer; box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12); }
+  .qa-panel { position: fixed; top: 52px; left: 12px; z-index: 2147483600; width: min(440px, calc(100vw - 24px)); background: #fff; border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18); padding: 16px; display: grid; gap: 10px; font-size: 0.92rem; }
+  .qa-panel[hidden] { display: none; }
+  .qa-panel h4 { margin: 0; font-family: var(--display); font-size: 1rem; }
+  .qa-row { display: grid; grid-template-columns: 6.5em 1fr; gap: 8px; }
+  .qa-row span:first-child { color: var(--muted); }
+  .qa-row code, .qa-panel textarea { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 0.78rem; overflow-wrap: anywhere; }
+  .qa-panel textarea { width: 100%; min-height: 84px; border: 1px solid var(--line); border-radius: 8px; padding: 8px; resize: vertical; }
+  .qa-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+  .qa-actions button { font: 600 0.88rem var(--body); border-radius: 8px; padding: 7px 14px; cursor: pointer; border: 1px solid var(--line); background: #fff; color: var(--ink); }
+  .qa-actions .primary { background: var(--leaf); border-color: var(--leaf); color: #fff; }
+  .qa-status { font-weight: 600; }
+  .qa-status.ok { color: #1d7a52; }
+  .qa-status.bad { color: #b4381c; }
+  .qa-note { color: var(--muted); font-size: 0.82rem; margin: 0; }
+</style>
+</head>
+<body>
+<div class="demo-ribbon">Demo site for testing the LinnoChat chat widget. The council and its content are made up.</div>
+<header>
+  <div class="wrap top">
+    <a class="brand" href="#">
+      <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#2f8f5b"/><path d="M12 26c0-8 6-14 16-14-1 10-7 16-14 16" fill="#fff"/><path d="M12 30c3-5 7-9 12-12" stroke="#2f8f5b" stroke-width="2.2" stroke-linecap="round" fill="none"/></svg>
+      <span><b>Greenfield City Council</b><small>Cleaner streets, greener city</small></span>
+    </a>
+    <nav aria-label="Main">
+      <a href="#services">Services</a><a href="#news">News</a><a href="#">Bins &amp; collections</a><a href="#">Pay online</a><a href="#">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <h1>Waste and recycling, made simple</h1>
+    <p>Find your collection day, book a bulky item pickup or order a new bin. Got a question? Our digital assistant is one click away, in the chat button at the corner of the screen.</p>
+    <form class="search" role="search" onsubmit="return false">
+      <input type="search" placeholder="What can we help you with today?" aria-label="Search services">
+      <button type="submit">Search</button>
+    </form>
+  </div>
+</section>
+
+<main class="wrap">
+  <div class="services" id="services">
+    <a class="service" href="#"><span class="ic">♻️</span><h3>Recycling guide</h3><p>What goes in the blue bin, and what doesn't.</p></a>
+    <a class="service" href="#"><span class="ic">📅</span><h3>Collection days</h3><p>Look up your street's schedule.</p></a>
+    <a class="service" href="#"><span class="ic">🛋️</span><h3>Bulky item pickup</h3><p>Book a free pickup for furniture.</p></a>
+    <a class="service" href="#"><span class="ic">🗑️</span><h3>Order a bin</h3><p>New, replacement or extra bins.</p></a>
+  </div>
+
+  <div class="two">
+    <section id="news">
+      <h2>Council news</h2>
+      <div class="news">
+        <article><time>October 5, 2026</time><h3>Food waste collection starts in November</h3><p>Every household will get a small kitchen caddy and a weekly pickup.</p></article>
+        <article><time>September 28, 2026</time><h3>Riverside Park reopens</h3><p>After six months of works: new playgrounds and a cycle path.</p></article>
+        <article><time>September 21, 2026</time><h3>Holiday collection changes</h3><p>Collections move one day later during the holiday week.</p></article>
+      </div>
+    </section>
+    <aside>
+      <h2>Need help?</h2>
+      <div class="box">
+        <h3>Digital assistant</h3>
+        <p>Available around the clock in the chat button. It can also ask you a few quick questions about your recycling habits.</p>
+        <ul><li>Customer service: 0100 000 0000</li><li>Front desk: Mon to Thu, 8:00 to 13:00</li></ul>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap"><span>© Greenfield City Council (fictional) · Demo site</span><span>Accessibility · Privacy · Site map</span></div>
+</footer>
+
+<button class="qa-toggle" type="button" id="qa-toggle" aria-expanded="false" aria-controls="qa-panel">Test tools</button>
+<div class="qa-panel" id="qa-panel" hidden>
+  <h4>Widget shown on this site</h4>
+  <div class="qa-row"><span>Environment</span><code id="qa-env">-</code></div>
+  <div class="qa-row"><span>Account</span><code id="qa-account">-</code></div>
+  <div class="qa-row"><span>Project</span><code id="qa-survey">-</code></div>
+  <div class="qa-row"><span>Status</span><span class="qa-status" id="qa-status">Checking…</span></div>
+  <label for="qa-snippet"><b>Show a different widget:</b> paste the embed snippet from LinnoChat (Configuration → WebChat → Widget)</label>
+  <textarea id="qa-snippet" spellcheck="false" placeholder='<script src="https://webchat.lcb-stage.linnovate.net/a/embed/loader.js" data-account="..." data-survey="..."></script>'></textarea>
+  <div class="qa-actions">
+    <button type="button" class="primary" id="qa-apply">Show on site</button>
+    <button type="button" id="qa-reset">Back to default</button>
+  </div>
+  <p class="qa-note">After you change a setting in LinnoChat and save, refresh this page to see it. No need to paste again. Conversations from this site are saved as Live.</p>
+</div>
+
+<script>
+  var QA_KEY = 'linnochat-widget-demo-snippet-en';
+  var LOADERS = { stage: 'https://webchat.lcb-stage.linnovate.net', dev: 'https://webchat.lcb-dev.linnovate.net' };
+  var DEFAULT_SNIPPET = '<script src="https://webchat.lcb-stage.linnovate.net/a/embed/loader.js" data-account="convercx" data-survey="82412c3a972640c997c90f1e150299ea"><\/script>';
+  var idOnly = function (value) { return (value || '').replace(/[^\w-]/g, ''); };
+
+  function snippetFromLink() {
+    var params = new URLSearchParams(location.search);
+    if (!params.get('survey')) return '';
+    var base = LOADERS[params.get('env')] || LOADERS.stage;
+    return '<script src="' + base + '/a/embed/loader.js" data-account="' + idOnly(params.get('account') || 'convercx') +
+      '" data-survey="' + idOnly(params.get('survey')) + '"><\/script>';
+  }
+  function storedSnippet() { try { return localStorage.getItem(QA_KEY) || ''; } catch (e) { return ''; } }
+  function store(value) { try { value ? localStorage.setItem(QA_KEY, value) : localStorage.removeItem(QA_KEY); } catch (e) {} }
+
+  var fromLink = snippetFromLink();
+  if (fromLink) store(fromLink);
+  window.QA_SNIPPET = fromLink || storedSnippet() || DEFAULT_SNIPPET;
+</script>
+
+<script>
+  (function () {
+    var toggle = document.getElementById('qa-toggle');
+    var panel = document.getElementById('qa-panel');
+    var snippet = window.QA_SNIPPET;
+    var pick = function (re) { var m = snippet.match(re); return m ? m[1] : '-'; };
+    var host = pick(/src="https?:\/\/([^/"]+)/);
+    document.getElementById('qa-env').textContent = /lcb-stage/.test(host) ? 'Staging' : /lcb-dev/.test(host) ? 'DEV' : host;
+    document.getElementById('qa-account').textContent = pick(/data-account="([^"]+)"/);
+    document.getElementById('qa-survey').textContent = pick(/data-survey="([^"]+)"/);
+    document.getElementById('qa-snippet').value = snippet === DEFAULT_SNIPPET ? '' : snippet;
+
+    toggle.addEventListener('click', function () {
+      panel.hidden = !panel.hidden;
+      toggle.setAttribute('aria-expanded', String(!panel.hidden));
+    });
+    document.getElementById('qa-apply').addEventListener('click', function () {
+      var value = document.getElementById('qa-snippet').value.trim();
+      if (!/data-survey=/.test(value)) { document.getElementById('qa-status').textContent = 'That does not look like an embed snippet: data-survey is missing.'; return; }
+      store(value);
+      location.href = location.pathname;
+    });
+    document.getElementById('qa-reset').addEventListener('click', function () { store(''); location.href = location.pathname; });
+
+    var status = document.getElementById('qa-status');
+    var tries = 0;
+    var timer = setInterval(function () {
+      tries++;
+      if (document.getElementById('topicx-webchat-embed-root')) {
+        clearInterval(timer); status.textContent = 'Widget loaded'; status.className = 'qa-status ok';
+      } else if (tries > 24) {
+        clearInterval(timer); status.textContent = 'Widget not loaded: the project has no active widget, or the snippet is wrong.'; status.className = 'qa-status bad';
+      }
+    }, 500);
+  })();
+</script>
+
+<script>
+  document.write(window.QA_SNIPPET);
+</script>
+</body>
+</html>
